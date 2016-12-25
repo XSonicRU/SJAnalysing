@@ -18,8 +18,13 @@ public class Analysis {
         } else if (type == 2) {
             Vector v = new Vector();
             for (char a : data) {
+				if(Character.isWhitespace(a)){
+					continue;
+				}
                 if (v.contains(a)) {
-                    v.insertElementAt(((int) (v.get(v.indexOf(a) + 1)) + 1), v.indexOf(a) + 1);
+                    int oldValue = (v.get(v.indexOf(a) + 1));
+					v.remove(v.indexOf(a) + 1);
+                    v.insertElementAt (oldValue +1, v.indexOf(a) + 1);
                 } else {
                     v.add(a);
                     v.add(1);
