@@ -22,8 +22,8 @@ public class Analysis {
 					continue;
 				}
                 if (v.contains(a)) {
-                    int oldValue = (v.get(v.indexOf(a) + 1));
-					v.remove(v.indexOf(a) + 1);
+                    int oldValue = (int) (v.get(v.indexOf(a) + 1));
+                    v.remove(v.indexOf(a) + 1);
                     v.insertElementAt (oldValue +1, v.indexOf(a) + 1);
                 } else {
                     v.add(a);
