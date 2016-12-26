@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Vector;
 
 public class Analysis {
@@ -10,7 +11,9 @@ public class Analysis {
     }
 
     public char[] Start() {
-        int[] result;
+        if (new String(data).trim().equals("")) {
+            return new char[]{' ', ' '};
+        }
         if (type == 0) {
             Vector v = new Vector();
             for (char a : data) {
@@ -35,7 +38,13 @@ public class Analysis {
             }
             return new char[]{(char) v.get(v.indexOf(max) - 1), (char) v.get(v.indexOf(1) - 1)}; //First - max, second - min
         } else if (type == 1) {
-
+            Vector v = new Vector();
+            if (Arrays.binarySearch(data, ' ') == -1) {
+                return data;
+            }
+            if (data[0] == ' ') {
+                data = Arrays.copyOfRange(data, 1, data.length);
+            }
         } else if (type == 2) {
             Vector v = new Vector();
             for (char a : data) {
