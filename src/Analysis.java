@@ -12,7 +12,29 @@ public class Analysis {
     public char[] Start() {
         int[] result;
         if (type == 0) {
+            Vector v = new Vector();
+            for (char a : data) {
+                if (!Character.isLetter(a)) {
+                    continue;
+                }
+                if (v.contains(a)) {
+                    int oldValue = (int) (v.get(v.indexOf(a) + 1));
+                    v.remove(v.indexOf(a) + 1);
+                    v.insertElementAt(oldValue + 1, v.indexOf(a) + 1);
+                } else {
+                    v.add(a);
+                    v.add(1);
+                }
+            }
+            int max = 0;
+            for (int i = 1; i < v.size(); i = i + 2) {
+                int buf = (int) v.get(i);
+                if (buf > max) {
+                    max = buf;
+                }
+            }
 
+            return new char[]{(char) v.get(v.indexOf(max) - 1), (char) v.get(v.indexOf(1) - 1)}; //First - max, second - min
         } else if (type == 1) {
 
         } else if (type == 2) {
